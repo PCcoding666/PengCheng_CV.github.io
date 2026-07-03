@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, Twitter } from "lucide-react";
+import { Github, Linkedin, Twitter, Youtube } from "lucide-react";
 
 // ─── Replace with your real X handle ────────────────────────────────
 const X_HANDLE = "Peng5231631440";
@@ -250,6 +250,15 @@ export default function Home() {
                 X
               </a>
               <a
+                href="https://www.youtube.com/@PCcoding666"
+                className="contact-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Youtube />
+                YouTube
+              </a>
+              <a
                 href="https://www.linkedin.com/in/cheng-peng-30936a2a0/"
                 className="contact-link"
                 target="_blank"
@@ -257,13 +266,6 @@ export default function Home() {
               >
                 <Linkedin />
                 LinkedIn
-              </a>
-              <a
-                href="mailto:e1143754@u.nus.edu"
-                className="contact-link"
-              >
-                <Mail />
-                Email
               </a>
             </div>
           </div>
