@@ -1,3 +1,344 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* ─── Design tokens ─────────────────────────────────────────────── */
+:root {
+  --bg:       #F7F4EF;   /* warm off-white paper */
+  --surface:  #F0EDE7;   /* slightly darker surface */
+  --border:   #E2DDD6;   /* warm divider */
+  --text:     #1C1917;   /* near-black, warm */
+  --text-2:   #57534E;   /* secondary */
+  --text-3:   #A8A29E;   /* tertiary / muted */
+  --accent:   #0D9488;   /* teal — sole saturated colour */
+  --warm-em:  #92400E;   /* warm amber for the italic "fail" emphasis */
+
+  --serif:  'Newsreader', Georgia, 'Times New Roman', serif;
+  --sans:   -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --mono:   'IBM Plex Mono', 'Fira Mono', 'Courier New', monospace;
+
+  --max-w: 680px;
+  --px:    1.5rem;
+}
+
+/* ─── Reset ─────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+body { min-height: 100vh; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+
+/* ─── Layout shell ──────────────────────────────────────────────── */
+.wrap {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--px);
+}
+
+/* ─── Header ────────────────────────────────────────────────────── */
+.site-header {
+  padding: 2rem 0 0;
+}
+.site-header .wrap {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.site-name {
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--text);
+}
+.header-nav {
+  display: flex;
+  gap: 1.25rem;
+}
+.header-nav a {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--text-3);
+  transition: color 0.15s;
+}
+.header-nav a:hover { color: var(--accent); }
+
+/* ─── Main ──────────────────────────────────────────────────────── */
+main { padding: 4rem 0 6rem; }
+
+section { margin-bottom: 5rem; }
+section:last-child { margin-bottom: 0; }
+
+/* Section label ─ monospace uppercase micro-text */
+.section-label {
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: 1.75rem;
+}
+
+/* ─── Hero ──────────────────────────────────────────────────────── */
+.hero { padding-top: 1.5rem; }
+
+.hero-headline {
+  font-family: var(--serif);
+  font-size: clamp(1.5rem, 4vw, 2.125rem);
+  font-weight: 400;
+  line-height: 1.35;
+  color: var(--text);
+  margin-bottom: 1.25rem;
+  max-width: 580px;
+}
+/* The "fail" clause gets warmth + italic weight */
+.hero-headline em {
+  font-style: italic;
+  color: var(--warm-em);
+}
+
+.hero-sub {
+  font-size: 0.9375rem;
+  color: var(--text-2);
+  line-height: 1.75;
+  max-width: 560px;
+  margin-bottom: 2rem;
+}
+
+.trust-strip {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--text-3);
+  letter-spacing: 0.02em;
+}
+
+/* ─── Builds list ───────────────────────────────────────────────── */
+.builds-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.build-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem 2rem;
+  padding: 1.25rem 0;
+  border-top: 1px solid var(--border);
+  align-items: start;
+}
+.build-row:last-child { border-bottom: 1px solid var(--border); }
+
+/* Muted styling for shut-down projects */
+.build-row.shutdown .build-title { color: var(--text-2); }
+
+.build-title {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.4rem;
+}
+
+.build-desc {
+  font-size: 0.875rem;
+  color: var(--text-2);
+  line-height: 1.65;
+  margin-bottom: 0.625rem;
+}
+
+.build-metric {
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  color: var(--text-3);
+  letter-spacing: 0.01em;
+  margin-bottom: 0.625rem;
+}
+
+.build-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+}
+.tag {
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  color: var(--text-3);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 0.125rem 0.5rem;
+  border-radius: 3px;
+}
+
+/* Links column */
+.build-links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+  padding-top: 0.125rem;
+  min-width: fit-content;
+}
+.build-link {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--accent);
+  white-space: nowrap;
+  transition: opacity 0.15s;
+}
+.build-link:hover { opacity: 0.65; }
+
+/* ─── Status badges ─────────────────────────────────────────────── */
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.02em;
+  line-height: 1;
+}
+
+/* Coloured dot shared shape */
+.status-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.s-building { color: var(--accent); }
+.s-building .status-dot { background: var(--accent); }
+
+.s-live { color: #15803D; }
+.s-live .status-dot { background: #22C55E; }
+
+.s-demoed { color: #6D28D9; }
+.s-demoed .status-dot { background: #A78BFA; }
+
+.s-published { color: #C2410C; }
+.s-published .status-dot { background: #FB923C; }
+
+/* Shut-down: a calm em-dash instead of a coloured dot */
+.s-shutdown { color: var(--text-3); }
+.s-shutdown .status-dot {
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  background: none;
+  font-size: 0.875rem;
+  line-height: 1;
+}
+
+/* ─── Track record ──────────────────────────────────────────────── */
+.track-list { display: flex; flex-direction: column; }
+
+.track-row {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 1rem 1.5rem;
+  padding: 1.125rem 0;
+  border-top: 1px solid var(--border);
+  align-items: start;
+}
+.track-row:last-child { border-bottom: 1px solid var(--border); }
+
+.track-period {
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  color: var(--text-3);
+  line-height: 1.5;
+  padding-top: 0.2rem;
+  white-space: pre-line;
+}
+
+.track-role  { font-size: 0.875rem; font-weight: 600; color: var(--text); }
+.track-org   { font-size: 0.875rem; color: var(--text-2); margin-bottom: 0.3rem; }
+.track-detail {
+  font-size: 0.8125rem;
+  color: var(--text-2);
+  line-height: 1.6;
+}
+.track-detail strong { color: var(--text); font-weight: 600; }
+
+/* ─── About ─────────────────────────────────────────────────────── */
+.about-pull {
+  font-family: var(--serif);
+  font-size: clamp(1.125rem, 2.5vw, 1.375rem);
+  font-style: italic;
+  color: var(--text);
+  line-height: 1.5;
+  padding-left: 1.25rem;
+  border-left: 2px solid var(--border);
+  margin-bottom: 1.5rem;
+}
+
+.about-body {
+  font-size: 0.9375rem;
+  color: var(--text-2);
+  line-height: 1.8;
+  max-width: 560px;
+  margin-bottom: 2.5rem;
+}
+
+/* ─── Contact links ─────────────────────────────────────────────── */
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  color: var(--text-2);
+  transition: color 0.15s;
+}
+.contact-link:hover { color: var(--accent); }
+.contact-link svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+/* ─── Footer ────────────────────────────────────────────────────── */
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 1.5rem 0;
+}
+.site-footer .wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-note {
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  color: var(--text-3);
+}
+
+/* ─── Responsive ────────────────────────────────────────────────── */
+@media (max-width: 580px) {
+  :root { --px: 1.125rem; }
+
+  .site-header .wrap { flex-direction: column; gap: 0.625rem; }
+
+  .build-row {
+    grid-template-columns: 1fr;
+  }
+  .build-links {
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .track-row {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+  .track-period { padding-top: 0; }
+}
