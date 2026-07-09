@@ -1,4 +1,5 @@
 import { Github, Linkedin, Twitter, Youtube } from "lucide-react";
+import BuildDetail from "./BuildDetail";
 
 // ─── Replace with your real X handle ────────────────────────────────
 const X_HANDLE = "Peng5231631440";
@@ -12,6 +13,7 @@ interface Build {
   status: BuildStatus;
   statusLabel: string;
   description: string;
+  detail?: string;
   metric?: string;
   tags: string[];
   links: { label: string; href: string }[];
@@ -25,6 +27,8 @@ const BUILDS: Build[] = [
     statusLabel: "building",
     description:
       "An AI agent that turns any video into structured, illustrated notes.",
+    detail:
+      "Started Jan 2025. An agent that orchestrates skills — transcription, keyframe understanding, and downstream generation like illustrated notes — into one video-understanding harness. Still pre-launch; the current push is getting it in front of first real users.",
     tags: ["LLM Agent", "Python", "Computer Vision"],
     links: [
       {
@@ -40,6 +44,8 @@ const BUILDS: Build[] = [
     statusLabel: "shut down",
     description:
       "A paid YouTube downloader I shipped end-to-end — closed once the unit economics didn't work.",
+    detail:
+      "Built with a mentor from the Antalpha days. Full stack shipped: SEO, a live payment system, real traffic. It died on unit economics — no overseas entity for Stripe, and proxy/traffic costs outran revenue at ~50 monthly users and one paying customer. The most useful failure I've run.",
     metric: "~50 monthly users · 1 paying customer",
     tags: ["Node.js", "Stripe", "SEO"],
     links: [],
@@ -166,6 +172,12 @@ export default function Home() {
                     </div>
                     <p className="build-desc">{b.description}</p>
                     {b.metric && <p className="build-metric">{b.metric}</p>}
+                    {b.detail && (
+                      <BuildDetail
+                        id={`build-detail-${b.id}`}
+                        detail={b.detail}
+                      />
+                    )}
                     <div className="build-tags">
                       {b.tags.map((t) => (
                         <span key={t} className="tag">

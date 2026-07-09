@@ -160,6 +160,36 @@ section:last-child { margin-bottom: 0; }
   margin-bottom: 0.625rem;
 }
 
+.build-detail-wrap {
+  margin-bottom: 0.625rem;
+}
+
+.build-detail-toggle {
+  appearance: none;
+  border: 0;
+  background: none;
+  padding: 0;
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  color: var(--text-3);
+  line-height: 1.4;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+.build-detail-toggle:hover { color: var(--accent); }
+.build-detail-toggle:focus-visible {
+  outline: 1px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.build-detail {
+  font-size: 0.875rem;
+  color: var(--text-2);
+  line-height: 1.65;
+  margin-top: 0.5rem;
+  max-width: 560px;
+}
+
 .build-tags {
   display: flex;
   flex-wrap: wrap;
