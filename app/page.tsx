@@ -21,34 +21,59 @@ interface Build {
 
 const BUILDS: Build[] = [
   {
-    id: "vidsnap",
-    title: "VidSnap",
-    status: "building",
-    statusLabel: "building",
+    id: "super-error-log",
+    title: "Super Error Log",
+    status: "live",
+    statusLabel: "live",
     description:
-      "An AI agent that turns any video into structured, illustrated notes.",
+      "A paper-first wrong-question loop for boarding middle-school students: digitize on weekends, rework on paper during the week, bring results back the next weekend.",
     detail:
-      "Started Jan 2025. An agent that orchestrates skills — transcription, keyframe understanding, and downstream generation like illustrated notes — into one video-understanding harness. Still pre-launch; the current push is getting it in front of first real users.",
-    tags: ["LLM Agent", "Python", "Computer Vision"],
+      "Students open a phone web app with an invite code, photograph worksheets, let AI find questions, then print and rework on paper before submitting results. Live at study.pccoding666.com; parent views and variant questions are not in yet. Controlled invite-only trial.",
+    tags: ["TypeScript", "React", "Express", "Swift", "Education"],
     links: [
       {
+        label: "Try it",
+        href: "https://study.pccoding666.com/s/",
+      },
+      {
         label: "GitHub",
-        href: "https://github.com/PCcoding666/my_youtube_summarizer",
+        href: "https://github.com/PCcoding666/Super_Error_Log",
       },
     ],
   },
   {
-    id: "yt-download",
-    title: "YouTube Download",
-    status: "shutdown",
-    statusLabel: "shut down",
+    id: "personal-video-guide",
+    title: "Personal Video Guide",
+    status: "building",
+    statusLabel: "building",
     description:
-      "A paid YouTube downloader I shipped end-to-end — closed once the unit economics didn't work.",
+      "A local toolkit so a host agent can guide you through videos — discovery, captions, timestamps — instead of summarizing them.",
     detail:
-      "Built with a mentor from the Antalpha days. Full stack shipped: SEO, a live payment system, real traffic. It died on unit economics — no overseas entity for Stripe, and proxy/traffic costs outran revenue at ~50 monthly users and one paying customer. The most useful failure I've run.",
-    metric: "~50 monthly users · 1 paying customer",
-    tags: ["Node.js", "Stripe", "SEO"],
-    links: [],
+      "Deterministic half for channel feeds, caption fetch, transcript search, and jump links; the host agent does judgment and scheduling. No model calls inside the toolkit. Early: profile/sources/seen state and feed discovery are in; caption pipeline, CLI/MCP, and Skill still planned. Split out of VidSnap.",
+    tags: ["Python", "MCP", "YouTube"],
+    links: [
+      {
+        label: "GitHub",
+        href: "https://github.com/PCcoding666/personal-video-guide",
+      },
+    ],
+  },
+  {
+    id: "lct",
+    title: "LCT",
+    status: "published",
+    statusLabel: "published",
+    description:
+      "A native macOS app for real-time captions and local AI translation of system audio or the microphone.",
+    detail:
+      "Captures audio, transcribes speech, and streams a translation beside the original via a local Ollama model. Default branch is macOS; the Windows app is archived with earlier releases still available. No public download homepage set on the repo.",
+    tags: ["Swift", "macOS", "Ollama", "ASR"],
+    links: [
+      {
+        label: "GitHub",
+        href: "https://github.com/PCcoding666/LCT",
+      },
+    ],
   },
 ];
 
