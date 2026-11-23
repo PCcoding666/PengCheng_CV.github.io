@@ -372,3 +372,61 @@ section:last-child { margin-bottom: 0; }
   }
   .track-period { padding-top: 0; }
 }
+
+/* ─── Bilingual: show only the active language ──────────────────── */
+html[data-lang="en"] .t-zh,
+html[data-lang="zh"] .t-en { display: none; }
+
+/* Newsreader has no Chinese glyphs; give Chinese a matching serif */
+html[data-lang="zh"] {
+  --serif: 'Newsreader', 'Songti SC', 'Noto Serif SC', 'STSong', serif;
+}
+html[data-lang="zh"] .hero-headline { line-height: 1.5; }
+
+.lang-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-left: 0.5rem;
+  padding-left: 1rem;
+  border-left: 1px solid var(--border);
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--text-3);
+}
+.lang-toggle button {
+  appearance: none;
+  border: 0;
+  background: none;
+  padding: 0;
+  font: inherit;
+  color: var(--text-3);
+  cursor: pointer;
+  transition: color 0.15s;
+}
+.lang-toggle button:hover { color: var(--accent); }
+.lang-toggle button[aria-pressed="true"] { color: var(--text); }
+.lang-toggle button:focus-visible {
+  outline: 1px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* ─── Failure log ───────────────────────────────────────────────── */
+a.entry-row { transition: background 0.15s; }
+a.entry-row:hover .track-role { color: var(--accent); }
+
+.post-numbers { margin: 2rem 0 0.75rem; }
+.post-number {
+  font-family: var(--mono);
+  font-weight: 500;
+}
+.post-section { margin: 3rem 0 0; }
+.post-heading {
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+.post-para { margin-bottom: 1rem; max-width: none; }
+.section-label a:hover { color: var(--accent); }

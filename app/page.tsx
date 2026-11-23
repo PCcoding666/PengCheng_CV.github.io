@@ -162,6 +162,7 @@ export default function Home() {
             <a href="#builds">builds</a>
             <a href="#record">record</a>
             <a href="#about">about</a>
+            <a href="/failures">failures</a>
           </nav>
         </div>
       </header>

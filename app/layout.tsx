@@ -20,13 +20,21 @@ export const metadata: Metadata = {
   },
 };
 
+// Pick the language before first paint so there is no flash of the wrong one:
+// a saved choice wins, otherwise follow the browser. Only pages that use <T>
+// have bilingual text; the rest of the site is English.
+const LANG_SCRIPT = `(function(){try{var l=localStorage.getItem("lang");if(l!=="zh"&&l!=="en"){l=/^zh/i.test(navigator.language)?"zh":"en"}var d=document.documentElement;d.dataset.lang=l;d.lang=l==="zh"?"zh-CN":"en"}catch(e){}})();`;
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" data-lang="en" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: LANG_SCRIPT }} />
+      </head>
       <body>
         {children}
         <Analytics />
