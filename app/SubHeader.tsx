@@ -13,6 +13,9 @@ export default function SubHeader() {
           <a href="/">
             <T en="home" zh="首页" />
           </a>
+          <a href="/learning">
+            <T en="learning" zh="学习" />
+          </a>
           <a href="/failures">
             <T en="failures" zh="失败记录" />
           </a>

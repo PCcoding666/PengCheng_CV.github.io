@@ -429,4 +429,12 @@ a.entry-row:hover .track-role { color: var(--accent); }
   margin-bottom: 1rem;
 }
 .post-para { margin-bottom: 1rem; max-width: none; }
+.post-formula {
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  line-height: 1.7;
+  color: var(--text);
+  margin: 0 0 1rem;
+  overflow-wrap: anywhere;
+}
 .section-label a:hover { color: var(--accent); }
